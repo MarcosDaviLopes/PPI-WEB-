@@ -1,3 +1,5 @@
+package br.com.ifsc.texttospeech;
+
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
 import java.util.Locale;
@@ -22,5 +24,8 @@ public class TextToSpeechHelper implements TextToSpeech.OnInitListener {
             tts.setLanguage(Locale.getDefault());
             isReady = true;
         }
+    }
+
+    public void release() {
     }
 }

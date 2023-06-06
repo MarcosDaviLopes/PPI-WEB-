@@ -1,14 +1,9 @@
 package br.com.ifsc.texttospeech;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 import br.com.ifsc.texttospeech.R;
 
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText etTextInput;
     private Button btnSpeak;
-    private TextToSpeech textToSpeechHelper;
+    private TextToSpeechHelper textToSpeechHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         etTextInput = findViewById(R.id.editText);
         btnSpeak = findViewById(R.id.buttonSpeak);
 
-        textToSpeechHelper = new TextToSpeech(this);
+        textToSpeechHelper = new TextToSpeechHelper(this);
 
         btnSpeak.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,5 +38,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        textToSpeechHelper.release();
     }
 }
